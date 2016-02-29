@@ -1,0 +1,19 @@
+{
+  "name": "fm-dialogs",
+  "description": "FairManager Error Analyzer",
+  "homepage": "https://github.com/fairmanager/fm-error-analyzer",
+  "authors": [
+    "Oliver Salzburg <oliver.salzburg@gmail.com>"
+  ],
+  "main": "dist/fm-error-analyzer.js",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "angular": "^1.5.0"
+  },
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules"
+  ]
+}
