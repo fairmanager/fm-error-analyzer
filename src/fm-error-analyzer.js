@@ -26,11 +26,54 @@
  * @license http://opensource.org/licenses/mit-license.php MIT License
  */
 
-(function () {
+(function() {
 	"use strict";
 
 	/* globals angular */
 
-	angular.module("fmErrorAnalyzer", []);
+	angular.module( "fmErrorAnalyzer", [] );
 
+	angular
+		.module( "fmErrorAnalyzer" )
+		.constant( "fmError", FmError )
+		.service( "fmErrorAnalyzer", ErrorAnalyzer );
+
+	function ErrorAnalyzer() {
+	}
+
+	ErrorAnalyzer.prototype.analyze = function ErrorAnalyzer$analyze( error ) {
+		// Most simple case, error is a string.
+		if( typeof error === "string" ) {
+			return [ new FmError( error ) ];
+		}
+
+		// Start deeper analysis
+		var errorMessage = error.name || "";
+
+		if( error.message ) {
+			errorMessage = error.message;
+		}
+		if( error.info ) {
+			errorMessage = error.info + (errorMessage ? (" (" + errorMessage + ")" ) : "");
+		}
+
+		var errorObject = new FmError( errorMessage );
+		// Status is not considered a first-level information the user should see.
+		// We store it in the error object, but it shouldn't be part of the message.
+		if( error.status ) {
+			errorObject.status = error.status;
+		}
+
+		var errorStack = [ errorObject ];
+
+		if( error.inner ) {
+			return errorStack.concat( this.analyze( error.inner ) );
+		}
+
+		return errorStack;
+	};
+
+	function FmError( message ) {
+		this.message = message;
+	}
 })();
