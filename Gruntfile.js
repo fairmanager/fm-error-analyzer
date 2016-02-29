@@ -62,5 +62,5 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( "grunt-gh-pages" );
 	grunt.loadNpmTasks( "grunt-ng-annotate" );
 
-	grunt.registerTask( "default", [ "jshint", "html2js", "ngAnnotate", "concat", "uglify" ] );
+	grunt.registerTask( "default", [ "jshint", "ngAnnotate", "concat", "uglify" ] );
 };
