@@ -23,21 +23,10 @@ module.exports = function( grunt ) {
 				}
 			},
 
-			concat : {
-				template : {
-					src  : [ "dist/<%= pkg.name %>.js", "dist/<%= pkg.name %>.html.js" ],
-					dest : "dist/<%= pkg.name %>.tpls.js"
-				}
-			},
-
 			uglify : {
 				js       : {
 					src  : "dist/<%= pkg.name %>.js",
 					dest : "dist/<%= pkg.name %>.min.js"
-				},
-				template : {
-					src  : "dist/<%= pkg.name %>.tpls.js",
-					dest : "dist/<%= pkg.name %>.tpls.min.js"
 				}
 			},
 
@@ -55,7 +44,6 @@ module.exports = function( grunt ) {
 		}
 	);
 
-	grunt.loadNpmTasks( "grunt-contrib-concat" );
 	grunt.loadNpmTasks( "grunt-contrib-jshint" );
 	grunt.loadNpmTasks( "grunt-contrib-uglify" );
 	grunt.loadNpmTasks( "grunt-contrib-watch" );
