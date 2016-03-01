@@ -61,6 +61,12 @@
 
 		} else if( error.code ) {
 			errorMessage = error.code;
+			if( error.address ) {
+				errorMessage += " " + error.address;
+				if( error.port ) {
+					errorMessage += ":" + error.port;
+				}
+			}
 		}
 
 		if( error.info ) {
