@@ -52,9 +52,16 @@
 
 		if( error.message ) {
 			errorMessage = error.message;
+
+		} else if( error.statusText ) {
+			errorMessage = error.statusText;
+			if( error.status ) {
+				errorMessage += " (" + error.status + ")";
+			}
 		}
+
 		if( error.info ) {
-			errorMessage = error.info + (errorMessage ? (" (" + errorMessage + ")" ) : "");
+			errorMessage = error.info + ( errorMessage ? (" (" + errorMessage + ")" ) : "" );
 		}
 
 		var errorObject = new FmError( errorMessage );
@@ -68,6 +75,9 @@
 
 		if( error.inner ) {
 			return errorStack.concat( this.analyze( error.inner ) );
+		}
+		if( error.data && error.data.error ) {
+			return errorStack.concat( this.analyze( error.data.error ) );
 		}
 
 		return errorStack;
