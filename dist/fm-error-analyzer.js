@@ -58,6 +58,9 @@
 			if( error.status ) {
 				errorMessage += " (" + error.status + ")";
 			}
+
+		} else if( error.code ) {
+			errorMessage = error.code;
 		}
 
 		if( error.info ) {
