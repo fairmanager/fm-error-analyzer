@@ -1,6 +1,6 @@
 {
   "name": "fm-error-analyzer",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "FairManager Error Analyzer",
   "main": "dist/fm-error-analyzer.js",
   "dependencies": {

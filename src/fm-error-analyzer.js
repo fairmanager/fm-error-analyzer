@@ -47,6 +47,10 @@
 			return [ new FmError( error ) ];
 		}
 
+		if( !error ) {
+			return [ new FmError( "" ) ];
+		}
+
 		// Start deeper analysis
 		var errorMessage = error.name || "";
 
