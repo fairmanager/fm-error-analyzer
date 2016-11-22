@@ -89,8 +89,8 @@
 		if( error.inner ) {
 			return errorStack.concat( this.analyze( error.inner ) );
 		}
-		if( error.data && error.data.error ) {
-			return errorStack.concat( this.analyze( error.data.error ) );
+		if( error.data ) {
+			return errorStack.concat( this.analyze( error.data.error || error.data ) );
 		}
 
 		return errorStack;
