@@ -3,7 +3,7 @@
 		"tasks": [
 			{
 				"name": "Building dist files",
-				"command": "gulp",
+				"command": "grunt",
 				"comment": "[TASK] Rebuilt dist files"
 			}
 		]
