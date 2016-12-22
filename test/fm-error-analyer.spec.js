@@ -29,7 +29,7 @@ describe( "fmErrorAnalyzer", function() {
 		expect( result[ 1 ].message ).to.equal( "relation \"image\" does not exist" );
 	} );
 
-	it("parses more complex error", function() {
+	it( "parses more complex error", function() {
 		var error = {
 			status     : 503,
 			statusText : "Service Unavailable",
@@ -49,7 +49,21 @@ describe( "fmErrorAnalyzer", function() {
 		var result = fmErrorAnalyzer.analyze( error );
 		expect( result ).to.be.an( "array" ).with.length( 3 );
 		expect( result[ 0 ].message ).to.equal( "Service Unavailable (503)" );
-		expect( result[ 1 ].message ).to.equal( "The communication with the backend service failed (message could not be delivered)" );
+		expect( result[ 1 ].message ).to.equal(
+			"The communication with the backend service failed (message could not be delivered)" );
 		expect( result[ 2 ].message ).to.equal( "ECONNREFUSED 127.0.0.1:7333" );
-	})
+	} );
+
+	it( "parses nested errors", function() {
+		var error  = {
+			error : {
+				status  : 403,
+				message : "protected entity",
+				info    : "oh no!."
+			}
+		};
+		var result = fmErrorAnalyzer.analyze( error );
+		expect( result ).to.be.an( "array" ).with.length( 1 );
+		expect( result[ 0 ].message ).to.equal( "protected entity (oh no!)" );
+	} )
 } );

@@ -51,6 +51,10 @@
 			return [ new FmError( "" ) ];
 		}
 
+		if( Object.keys( error ).length === 1 && error.error ) {
+			return this.analyze( error.error );
+		}
+
 		// Start deeper analysis
 		var errorMessage = error.name || "";
 
