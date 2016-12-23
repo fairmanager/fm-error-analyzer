@@ -64,6 +64,6 @@ describe( "fmErrorAnalyzer", function() {
 		};
 		var result = fmErrorAnalyzer.analyze( error );
 		expect( result ).to.be.an( "array" ).with.length( 1 );
-		expect( result[ 0 ].message ).to.equal( "protected entity (oh no!)" );
+		expect( result[ 0 ].message ).to.equal( "oh no! (protected entity)" );
 	} )
 } );
