@@ -59,7 +59,7 @@ describe( "fmErrorAnalyzer", function() {
 			error : {
 				status  : 403,
 				message : "protected entity",
-				info    : "oh no!."
+				info    : "oh no!"
 			}
 		};
 		var result = fmErrorAnalyzer.analyze( error );
