@@ -1,11 +1,5 @@
-.idea/dbnavigator.xml
 .idea/deployment.xml
 .idea/workspace.xml
-
-.grunt/
 bower_components/
-coverage/
 node_modules/
 npm-debug.log
-yarn-error.log
-
